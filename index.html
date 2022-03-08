@@ -67,8 +67,16 @@ body {
   height: 7rem;
 }
 
+#container {
+  height: 100%;
+  padding-top: 0.2rem;
+  padding-left: 0.3rem;
+  padding-bottom: 0.2rem;
+}
+
 #text {
   padding: 0;
+  margin: 0;
   padding-left: 2rem;
   display:inline-block;
   color: #eee;
@@ -95,10 +103,12 @@ body {
 
 <ul id="myUL">
   <li id="element4">
-    <img src="https://userpicture10.smartschool.be/User/Userimage/hashimage/hash/3627_dba1f7fc-8163-4414-9907-f3df5c372f25/plain/1/square/1/res/256" id="preview" loading=";lazy">
-    <div id="text">
-      <h1>Aaron van Deuren</h1>
-      <p>WT6HB1A Mosa-RT</p>
+    <div id="container">
+      <img src="https://userpicture10.smartschool.be/User/Userimage/hashimage/hash/3627_dba1f7fc-8163-4414-9907-f3df5c372f25/plain/1/square/1/res/256" id="preview" loading=";lazy">
+      <div id="text">
+        <h1>Aaron van Deuren</h1>
+        <p>Mosa-RT: WT6HB1A</p>
+      </div>
     </div>
   </li>
 </ul>
@@ -129,12 +139,24 @@ Http.onreadystatechange = (e) => {
           var ul = document.getElementById("myUL");
           var li = document.createElement("li");
           var img = document.createElement("img");
+          var div1 = document.createElement("div"); 
+          var div2 = document.createElement("div"); 
+          var h1 = document.createElement("h1"); 
+          var p = document.createElement("p"); 
+          h1.innerText = f.firtName + ": " + f.lastName
+          p.innerText = f.school + ": " + f.klas
+          div1.setAttribute("id", "container");
+          div2.setAttribute("id", "text");
           img.setAttribute("src", f.imageUrl);
           img.setAttribute("id", "preview");
           img.setAttribute("loading", ";lazy");
-          li.appendChild(document.createTextNode(f.firtName + " " + f.lastName + " " + f.klas + " " + f.school));
+          // li.appendChild(document.createTextNode(f.firtName + " " + f.lastName + " " + f.klas + " " + f.school));
           li.setAttribute("id", "element4");
-          li.appendChild(img);
+          li.appendChild(div1);
+          div1.appendChild(img);
+          div1.appendChild(div2);
+          div2.appendChild(h1);
+          div2.appendChild(p);
           ul.appendChild(li);
           });
   }
