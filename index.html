@@ -33,13 +33,14 @@
 #element4:hover {
   background-color: rgb(154, 154, 154);
 }
-
-#element4:hover #preview {
-  position: fixed;
-  height: 50%;
-  width: auto;
-  left: 50%;
-  top : 10%;
+@media screen and (min-width: 800px) {
+  #element4:hover #preview {
+    position: fixed;
+    height: 50%;
+    width: auto;
+    left: 50%;
+    top : 10%;
+    }
 }
 
 #myUL li {
