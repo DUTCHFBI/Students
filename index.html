@@ -32,9 +32,12 @@ body {
 }
 #element4 {
   background-color: #323C46;
+  height: 100%;
+  padding: 0;
 }
 #preview {
   height: 100%;
+  border: 1rem #323C46;
   border-radius: 50%;
   display:inline-block;
 }
@@ -54,9 +57,9 @@ body {
 
 #myUL li {
   border-radius: 4px;
-  margin-top: -1px; /* Prevent double borders */
+  /* margin-top: -1px; 
+  margin-bottom: 1px; */
   background-color: #323C46;
-  padding: 12px;
   text-decoration: none;
   font-size: 18px;
   color: black;
@@ -65,15 +68,18 @@ body {
 }
 
 #text {
-  /* top: 30%;
-  transform: translateY(-70%); */
+  padding: 0;
   padding-left: 2rem;
   display:inline-block;
   color: #eee;
+  /* height: 100%; */
+  top: -1rem;
+  position: relative;
 }
 
 #text h1 p {
   margin: 0;
+  padding: 0;
 }
 
 #myUL li a:hover:not(.header) {
