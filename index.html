@@ -12,6 +12,7 @@ body {
   color: #eee;
 }
 #myInput {
+  background-color: #323C46;
   background-image: url('https://cdn.onlinewebfonts.com/svg/img_381798.png');
   background-size: 1%;
   background-position: 10px 12px;
@@ -21,8 +22,11 @@ body {
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
   margin-bottom: 12px;
-  background-color: #323C46;
+  
   color: #eee;
+  
+  position: fixed;
+  top: 0;
 }
 
 #myUL {
@@ -75,7 +79,9 @@ body {
   padding-left: 0.3rem;
   padding-bottom: 0.2rem;
 }
-
+#topnav{
+  background-color:#323C46;
+}
 #text {
   padding: 0;
   margin: 0;
@@ -100,9 +106,9 @@ body {
 <body>
 
 <h2 id="title">Students</h2>
-
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-
+<div id="topnav">
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+</div>
 <ul id="myUL">
 </ul>
 
