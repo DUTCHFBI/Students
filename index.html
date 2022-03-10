@@ -128,8 +128,8 @@ body {
 }
 
 .back-to-top-icon {
-  width: 1rem;
-  height: 1rem;
+  width: 5rem;
+  height: 5rem;
   color: #7ac9f9;
 }
 }
@@ -263,17 +263,17 @@ body {
 </head>
 <body>
 
-<h2 id="title">Students</h2>
+<h2 id="title to-top">Students</h2>
 <div id="topnav">
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
 </div>
 <ul id="myUL">
 </ul>
-<button class="back-to-top hidden">
-  <svg class="back-to-top-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
-  </svg>
-</button>
+  <button class="back-to-top hidden" onclick="toTop()">
+    <svg class="back-to-top-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" />
+    </svg>
+  </button>
 <script>
 var data
 $(function() {
@@ -296,7 +296,7 @@ Http.onreadystatechange = (e) => {
     var data = $.parseJSON(data)
     console.log(data)
     $.each(data, function(i, f) {
-      console.log(i)
+      // console.log(i)
           var ul = document.getElementById("myUL");
           var li = document.createElement("li");
           var img = document.createElement("img");
@@ -349,9 +349,10 @@ function myFunction() {
     }
 }
 
-$('selector').waitForImages(function() {
-    alert('All images are loaded.');
-});
+
+function toTop() {
+  window.scrollTo({ top: 100, left: 100, behavior: 'smooth' });
+}
 
 
 </script>
