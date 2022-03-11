@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"> </script>
 <style>
 * {
   box-sizing: border-box;
@@ -154,6 +155,10 @@ body {
   height: 30%;
 }
 
+#list {
+  display: none;
+}
+
 #spinner #spinner-box img{
   position: absolute;
   left: 50%;
@@ -205,13 +210,20 @@ body {
  background-color: transparent !important;
 }
 
+#userImg {
+  border-radius: 50%;
+}
+
+.about {
+  margin-left: 1rem;
+}
+
 </style>
 </head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
-<link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+<link type="text/html" rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
 <body>
-<h1 class="display-3 text-center text-white font-weight-bold">Studens</h1>
+<h1 class="display-3 text-center text-white font-weight-bold">Students</h1>
 
 <nav id="navbar" class="navbar navbar-light bg-light justify-content-center">
   <form class="form-center w-75">
@@ -234,15 +246,7 @@ body {
 </div>
 
 <div class="container d-flex justify-content-center">
-  <ul class="list-group mt-5 text-white nav-fill w-100">
-      <li class="list-group-item d-flex justify-content-between align-content-center w-100">
-          <div class="d-flex flex-row"> <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
-              <div class="ml-2">
-                  <h6 class="mb-0">Ogivet Maither</h6>
-                  <div class="about"> <span>22 Files</span> <span>Jan 21, 2020</span> </div>
-              </div>
-          </div>
-      </li>
+  <ul id="list" class="list-group mt-5 text-white nav-fill w-100">
   </ul>
 </div>
 
@@ -274,32 +278,82 @@ Http.onreadystatechange = (e) => {
     console.log(data)
     $.each(data, function(i, f) {
       // console.log(i)
-          var ul = document.getElementById("myUL");
+          var ul = document.getElementById("list");
+
           var li = document.createElement("li");
+          var div1 = document.createElement("div");
           var img = document.createElement("img");
-          var div1 = document.createElement("div"); 
           var div2 = document.createElement("div"); 
-          var h1 = document.createElement("h1"); 
-          var p = document.createElement("p"); 
-          h1.innerText = f.firtName + " " + f.lastName
-          p.innerText = f.school + ": " + f.klas
-          div1.setAttribute("id", "container");
-          div2.setAttribute("id", "text");
+          var h6 = document.createElement("h6"); 
+          var div3 = document.createElement("div"); 
+          var span1 = document.createElement("span"); 
+          var span2 = document.createElement("span"); 
+
+          li.setAttribute("class", "list-group-item d-flex justify-content-between align-content-center w-100");
+          div1.setAttribute("class", "d-flex flex-row");
           img.setAttribute("src", f.imageUrl);
-          img.setAttribute("id", "preview");
+          img.setAttribute("width", "40");
+          img.setAttribute("id", "userImg");
           img.setAttribute("loading", ";lazy");
-          // li.appendChild(document.createTextNode(f.firtName + " " + f.lastName + " " + f.klas + " " + f.school));
-          li.setAttribute("id", "element4");
-          li.appendChild(div1);
-          div1.appendChild(img);
-          div1.appendChild(div2);
-          div2.appendChild(h1);
-          div2.appendChild(p);
-          ul.appendChild(li);
+          div2.setAttribute("class", "ml-2");
+          h6.setAttribute("class", "mb-0");
+          h6.innerText = f.firtName + " " + f.lastName
+          div2.setAttribute("class", "about");
+          span1.innerText = f.school
+          span2.innerText = f.klas
+
+          ul.append(li);
+          li.append(div1);
+          div1.append(img);
+          div1.append(div2);
+          div2.append(h6);
+          div2.append(div3);
+          div3.append(span1);
+          div3.append(span2);
+
+
+          // h1.innerText = f.firtName + " " + f.lastName
+          // p.innerText = f.school + ": " + f.klas
+          // div1.setAttribute("id", "container");
+          // div2.setAttribute("id", "text");
+          // img.setAttribute("src", f.imageUrl);
+          // img.setAttribute("id", "preview");
+          // img.setAttribute("loading", ";lazy");
+          // li.setAttribute("id", "element4");
+          // li.appendChild(div1);
+          // div1.appendChild(img);
+          // div1.appendChild(div2);
+          // div2.appendChild(h1);
+          // div2.appendChild(p);
+          // ul.appendChild(li);
           });
     loadImg();
   }
 }
+
+      // li   <li class="list-group-item d-flex justify-content-between align-content-center w-100">
+      // div1     <div class="d-flex flex-row"> 
+      // img       <img src="https://img.icons8.com/color/100/000000/folder-invoices.png" width="40" />
+      // div2      <div class="ml-2">
+      // h6        <h6 class="mb-0">Ogivet Maither</h6>
+      // div3         <div class="about"> 
+      // span1             <span>22 Files</span> 
+      // span2            <span>Jan 21, 2020</span> 
+
+      //              </div>
+      //         </div>
+      //     </div>
+      // </li>
+
+      // <li class="list-group-item d-flex justify-content-between align-content-center w-100">
+      //   <div class="d-flex flex-row">
+      //       <img src="https://userpicture10.smartschool.be/User/Userimage/hashimage/hash/3627_dba1f7fc-8163-4414-9907-f3df5c372f25/plain/1/square/1/res/256" width="40" loading=";lazy">
+      //       <div class="about">
+      //         <h6 class="mb-0">Aaron van Deuren</h6>
+      //         <div><span>WT6HB1A</span><span></span></div>
+      //       </div>
+      //   </div>
+      // </li>
 
 
 });
@@ -308,7 +362,7 @@ function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    ul = document.getElementById("myUL");
+    ul = document.getElementById("list");
     li = ul.getElementsByTagName("li");
     for (i = 0; i < li.length; i++) {
         a = li[i];
@@ -341,7 +395,7 @@ function loadImg() {
 function removeSpinner() {
   console.log("Loaded list");
   document.getElementById("spinner").style.display = "none";
-  document.getElementById("myUL").style.display = "block";
+  document.getElementById("list").style.display = "block";
 }
 
 
