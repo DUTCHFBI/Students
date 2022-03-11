@@ -231,7 +231,7 @@ body {
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Q</span>
       </div>
-      <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+      <input type="text" id="searchInput" onkeyup="myFunction()" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
     </div>
   </form>
 </nav>
@@ -360,7 +360,7 @@ Http.onreadystatechange = (e) => {
 
 function myFunction() {
     var input, filter, ul, li, a, i, txtValue;
-    input = document.getElementById("myInput");
+    input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
     ul = document.getElementById("list");
     li = ul.getElementsByTagName("li");
