@@ -110,31 +110,50 @@ body {
   background-color: #384553;
 }
 
-.back-to-top {
-  position: fixed;
-  right: 2rem;
-  bottom: 2rem;
-  border-radius: 100%;
-  background: #141c38;
-  padding: 0.5rem;
-  border: none;
-  cursor: pointer;
-  opacity: 100%;
-  transition: opacity 0.5s;
+.scroll {
+    color: #fff;
+    margin-top: 100px
 }
 
-.back-to-top:hover {
-  opacity: 100%;
+#toTopBtn {
+    position: fixed;
+    bottom: 26px;
+    right: 39px;
+    z-index: 98;
+    padding: 21px;
+    background-color: rgba(75, 75, 92, 0.8)
 }
 
-.hidden {
-  opacity:65%;
+.js .cd-top--fade-out {
+    opacity: .5
 }
 
-.back-to-top-icon {
-  width: 5rem;
-  height: 5rem;
-  color: #7ac9f9;
+.js .cd-top--is-visible {
+    visibility: visible;
+    opacity: 1
+}
+
+.js .cd-top {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s, visibility .3s, background-color .3s
+}
+
+.cd-top {
+    position: fixed;
+    bottom: 20px;
+    bottom: var(--cd-back-to-top-margin);
+    right: 20px;
+    right: var(--cd-back-to-top-margin);
+    display: inline-block;
+    height: 40px;
+    height: var(--cd-back-to-top-size);
+    width: 40px;
+    width: var(--cd-back-to-top-size);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .05) !important;
+    background: url(https://res.cloudinary.com/dxfq3iotg/image/upload/v1571057658/cd-top-arrow.svg) no-repeat center 50%;
+    background-color: rgba(80, 81, 92, 0.8);
+    background-color: hsla(var(--cd-color-3-h), var(--cd-color-3-s), var(--cd-color-3-l), 0.8)
 }
 
 .center {
@@ -236,11 +255,6 @@ body {
   margin-left: 1rem;
 }
 
-#btn-back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-}
 
 </style>
 </head>
@@ -257,10 +271,7 @@ body {
   </div>
 </nav>
 
-<button type="button" onclick="toTop()" id="btn-back-to-top" class="btn btn-floating btn-outline-primary">Top</button>
-<!-- <div id="topnav">
-  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
-</div> -->
+<a href="#" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out" data-abc="true"></a>
 
 <div class="center" id="spinner">
   <div class="wave"></div>
@@ -404,9 +415,22 @@ function myFunction() {
 }
 
 
-function toTop() {
-  window.scrollTo({ top: 1, left: 1, behavior: 'smooth' });
+$(document).ready(function() {
+$(window).scroll(function() {
+if ($(this).scrollTop() > 20) {
+$('#toTopBtn').fadeIn();
+} else {
+$('#toTopBtn').fadeOut();
 }
+});
+
+$('#toTopBtn').click(function() {
+$("html, body").animate({
+scrollTop: 0
+}, 1000);
+return false;
+});
+});
 
 // function loadImg() {
 //   var counter = 0;
