@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"> </script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"> </script>
+<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <style>
 * {
   box-sizing: border-box;
@@ -155,9 +156,9 @@ body {
   height: 30%;
 }
 
-#list {
+/* #list {
   display: none;
-}
+} */
 
 #spinner #spinner-box img{
   position: absolute;
@@ -226,14 +227,14 @@ body {
 <h1 class="display-3 text-center text-white font-weight-bold">Students</h1>
 
 <nav id="navbar" class="navbar navbar-light bg-light justify-content-center">
-  <form class="form-center w-75">
+  <div class="form-center w-75">
     <div class="input-group">
       <div class="input-group-prepend">
         <span class="input-group-text" id="basic-addon1">Q</span>
       </div>
       <input type="text" id="searchInput" onkeyup="myFunction()" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
     </div>
-  </form>
+  </div>
 </nav>
 <!-- <div id="topnav">
   <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
@@ -294,7 +295,8 @@ Http.onreadystatechange = (e) => {
           img.setAttribute("src", f.imageUrl);
           img.setAttribute("width", "40");
           img.setAttribute("id", "userImg");
-          img.setAttribute("loading", ";lazy");
+          img.setAttribute("class", "lazyload");
+          img.setAttribute("data-src", "spinner.gif");
           div2.setAttribute("class", "ml-2");
           h6.setAttribute("class", "mb-0");
           h6.innerText = f.firtName + " " + f.lastName
@@ -327,7 +329,9 @@ Http.onreadystatechange = (e) => {
           // div2.appendChild(p);
           // ul.appendChild(li);
           });
-    loadImg();
+    // loadImg();
+    removeSpinner();
+    
   }
 }
 
@@ -380,23 +384,24 @@ function toTop() {
   window.scrollTo({ top: 1, left: 1, behavior: 'smooth' });
 }
 
-function loadImg() {
-  var counter = 0;
-  var size = $('img').length;
+// function loadImg() {
+//   var counter = 0;
+//   var size = $('img').length;
 
-  $("img").load(function() { // many or just one image(w) inside body or any other container
-      counter += 1;
-      counter === size && removeSpinner();
-  }).each(function() {
-    this.complete && $(this).load();        
-  });
-}
+//   $("img").load(function() { // many or just one image(w) inside body or any other container
+//       counter += 1;
+//       counter === size && removeSpinner();
+//   }).each(function() {
+//     this.complete && $(this).load();        
+//   });
+// }
 
 function removeSpinner() {
   console.log("Loaded list");
   document.getElementById("spinner").style.display = "none";
-  document.getElementById("list").style.display = "block";
+  // document.getElementById("list").style.display = "block";
 }
+
 
 
 </script>
