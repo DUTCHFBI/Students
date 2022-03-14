@@ -1,100 +1,75 @@
-<main>
-    <div class="dank-ass-loader">
-       <div class="row">
-          <div class="arrow up outer outer-18"></div>
-          <div class="arrow down outer outer-17"></div>
-          <div class="arrow up outer outer-16"></div>
-          <div class="arrow down outer outer-15"></div>
-          <div class="arrow up outer outer-14"></div>
-       </div>
-       <div class="row">
-          <div class="arrow up outer outer-1"></div>
-          <div class="arrow down outer outer-2"></div>
-          <div class="arrow up inner inner-6"></div>
-          <div class="arrow down inner inner-5"></div>
-          <div class="arrow up inner inner-4"></div>
-          <div class="arrow down outer outer-13"></div>
-          <div class="arrow up outer outer-12"></div>
-       </div>
-       <div class="row">
-          <div class="arrow down outer outer-3"></div>
-          <div class="arrow up outer outer-4"></div>
-          <div class="arrow down inner inner-1"></div>
-          <div class="arrow up inner inner-2"></div>
-          <div class="arrow down inner inner-3"></div>
-          <div class="arrow up outer outer-11"></div>
-          <div class="arrow down outer outer-10"></div>
-       </div>
-       <div class="row">
-          <div class="arrow down outer outer-5"></div>
-          <div class="arrow up outer outer-6"></div>
-          <div class="arrow down outer outer-7"></div>
-          <div class="arrow up outer outer-8"></div>
-          <div class="arrow down outer outer-9"></div>
-       </div>
-    </div>
- </main>
 <style>
-    $color: #fd7000;
-$size: 12px;
-$time: 1;
-
-main {
-    width: 100vw;
+bodY {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+  }
+  .center {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #090707;
-}
-
-.dank-ass-loader {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .row {
-        display: flex;
-    }
-}
-
-.arrow {
-    width: 0;
-    height: 0;
-    margin: 0 (-$size / 2);
-    border-left: $size solid transparent;
-    border-right: $size solid transparent;
-    border-bottom: ($size * 1.8) solid $color;
-    animation: blink $time + s infinite;
-    filter: drop-shadow(0 0 ($size * 1.5) $color);
-
-    &.down {
-        transform: rotate(180deg);
-    }
-
-    @for $i from 1 through 18 {
-        &.outer-#{$i} {
-            animation-delay: -($time / 18) * $i + s;
-        }
-    }
-
-    @for $i from 1 through 6 {
-        &.inner-#{$i} {
-            animation-delay: -($time / 6) * $i + s;
-        }
-    }
-}
-
-@keyframes blink {
+    background: #2c333a;
+    
+  }
+  .wave {
+    width: 5px;
+    height: 100px;
+    background: linear-gradient(45deg, #ffffff, #ffffff);
+    margin: 10px;
+    animation: wave 1s linear infinite;
+    border-radius: 20px;
+  }
+  .wave:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+  .wave:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+  .wave:nth-child(4) {
+    animation-delay: 0.3s;
+  }
+  .wave:nth-child(5) {
+    animation-delay: 0.4s;
+  }
+  .wave:nth-child(6) {
+    animation-delay: 0.5s;
+  }
+  .wave:nth-child(7) {
+    animation-delay: 0.6s;
+  }
+  .wave:nth-child(8) {
+    animation-delay: 0.7s;
+  }
+  .wave:nth-child(9) {
+    animation-delay: 0.8s;
+  }
+  .wave:nth-child(10) {
+    animation-delay: 0.9s;
+  }
+  
+  @keyframes wave {
     0% {
-        opacity: 0.1;
+      transform: scale(0);
     }
-    30% {
-        opacity: 1;
+    50% {
+      transform: scale(1);
     }
     100% {
-        opacity: 0.1;
+      transform: scale(0);
     }
-}
-
+  }
 </style>
+<div class="center">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
