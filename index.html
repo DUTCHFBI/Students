@@ -435,6 +435,7 @@ Http.onreadystatechange = (e) => {
 });
 
 function myFunction() {
+  spinnerActivated();
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById("searchInput");
     filter = input.value.toUpperCase();
@@ -443,13 +444,16 @@ function myFunction() {
     for (i = 0; i < li.length; i++) {
         a = li[i];
         txtValue = a.textContent || a.innerText;
+        console.log(txtValue)
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            li[i].style.display = "";
+            li[i].style.setProperty("display", "", "important")
         } else {
-            li[i].style.display = "none";
+            li[i].style.setProperty("display", "none", "important")
         }
     }
+    removeSpinner();
 }
+
 
 
 $(document).ready(function() {
@@ -486,7 +490,11 @@ function removeSpinner() {
   document.getElementById("spinner").style.display = "none";
   // document.getElementById("list").style.display = "block";
 }
-
+function spinnerActivated() {
+  console.log("Loaded activated");
+  document.getElementById("spinner").style.display = "block";
+  // document.getElementById("list").style.display = "block";
+}
 
 
 </script>
