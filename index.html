@@ -9,7 +9,7 @@
 * {
   box-sizing: border-box;
 }
-/* @media screen and (min-width: 800px) { */
+
 body {
   background-color: #2c333a !important;
   color: #eee;
@@ -230,6 +230,14 @@ body {
     transform: scaleX(1.1)
 }
 
+/* .list-group-item:hover img {
+    position: fixed;
+    height: 50%;
+    width: auto;
+    left: 50%;
+    top : 10%;
+} */
+
 .check {
     opacity: 0;
     transition: all 0.6s ease-in-out
@@ -253,9 +261,29 @@ body {
   border-radius: 50%;
 }
 
+#userImgBig {
+    opacity: 0%;
+    border-radius: 50%;
+    position: fixed;
+    height: 50%;
+    width: auto;
+    left: 50%;
+    top : 30%;
+}
+
+
+.list-group-item:hover #userImgBig {
+  opacity: 100%;
+}
+
+
 .about {
   margin-left: 1rem;
 }
+
+/* 
+@media screen and (max-width: 800px) {
+} */
 
 
 </style>
@@ -320,6 +348,7 @@ Http.onreadystatechange = (e) => {
           var ul = document.getElementById("list");
 
           var li = document.createElement("li");
+          var imgbig = document.createElement("img");
           var div1 = document.createElement("div");
           var img = document.createElement("img");
           var div2 = document.createElement("div"); 
@@ -329,6 +358,10 @@ Http.onreadystatechange = (e) => {
           var span2 = document.createElement("span"); 
 
           li.setAttribute("class", "list-group-item d-flex justify-content-between align-content-center w-100");
+          imgbig.setAttribute("src", f.imageUrl); 
+          imgbig.setAttribute("id", "userImgBig");
+          imgbig.setAttribute("class", "lazyload");
+          imgbig.setAttribute("data-src", "spinner.gif");
           div1.setAttribute("class", "d-flex flex-row");
           img.setAttribute("src", f.imageUrl);
           img.setAttribute("width", "40");
@@ -343,6 +376,7 @@ Http.onreadystatechange = (e) => {
           span2.innerText = f.klas
 
           ul.append(li);
+          li.append(imgbig);
           li.append(div1);
           div1.append(img);
           div1.append(div2);
