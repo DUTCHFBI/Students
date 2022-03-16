@@ -402,10 +402,28 @@ Http.onreadystatechange = (e) => {
           // ul.appendChild(li);
           });
     // loadImg();
+    handleList();
     removeSpinner();
-    
   }
 }
+
+function handleList() {
+  $("#list li").slice(20).css('display', 'none');s
+}
+
+var mincount = 20;
+var maxcount = 40;
+$(".image-gallery-list").scroll(function() {
+
+if($(".image-gallery-list").scrollTop() + $(".image-gallery-list").height() >= $(".image-gallery-list")[0].scrollHeight) {
+  
+  $(".image-gallery-ul li").slice(mincount,maxcount).fadeIn(1000);
+
+  mincount = mincount+20;
+  maxcount = maxcount+20;
+
+}
+});
 
       // li   <li class="list-group-item d-flex justify-content-between align-content-center w-100">
       // div1     <div class="d-flex flex-row"> 
@@ -463,7 +481,8 @@ $('#toTopBtn').fadeOut();
 
 $('#toTopBtn').click(function() {
 $("html, body").animate({
-scrollTop: 0
+scrollTop: 0,
+behavior: 'smooth'
 }, 1000);
 return false;
 });
