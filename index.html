@@ -73,7 +73,7 @@ body {
   text-decoration: none;
   font-size: 18px;
   color: black;
-  display: block;
+  /* display: block; */
   height: 7rem;
   margin-bottom: 0.3rem;
 }
@@ -348,7 +348,7 @@ Http.onreadystatechange = (e) => {
           var ul = document.getElementById("list");
 
           var li = document.createElement("li");
-          var imgbig = document.createElement("img");
+          // var imgbig = document.createElement("img");
           var div1 = document.createElement("div");
           var img = document.createElement("img");
           var div2 = document.createElement("div"); 
@@ -358,10 +358,11 @@ Http.onreadystatechange = (e) => {
           var span2 = document.createElement("span"); 
 
           li.setAttribute("class", "list-group-item d-flex justify-content-between align-content-center w-100");
-          imgbig.setAttribute("src", f.imageUrl); 
-          imgbig.setAttribute("id", "userImgBig");
-          imgbig.setAttribute("class", "lazyload");
-          imgbig.setAttribute("data-src", "spinner.gif");
+          li.setAttribute("onclick", "window.open('" + f.imageUrl + "', '_blank');");
+          // imgbig.setAttribute("src", f.imageUrl); 
+          // imgbig.setAttribute("id", "userImgBig");
+          // imgbig.setAttribute("class", "lazyload");
+          // imgbig.setAttribute("data-src", "spinner.gif");
           div1.setAttribute("class", "d-flex flex-row");
           img.setAttribute("src", f.imageUrl);
           img.setAttribute("width", "40");
@@ -376,7 +377,7 @@ Http.onreadystatechange = (e) => {
           span2.innerText = f.klas
 
           ul.append(li);
-          li.append(imgbig);
+          // li.append(imgbig);
           li.append(div1);
           div1.append(img);
           div1.append(div2);
@@ -408,7 +409,7 @@ Http.onreadystatechange = (e) => {
 }
 
 function handleList() {
-  $("#list li").slice(20).css('display', 'none');s
+  $("#list li").slice(20).css('visibility ', 'unset', 'important');
 }
 
 var mincount = 20;
