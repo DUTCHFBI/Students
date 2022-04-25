@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash or Dash</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script></head>
+
+<body>
+    <style>
+        .container {
+            width: 100%;
+            position: absolute;
+            top: 20%;
+            -ms-transform: translate(-50%);
+            transform: translate(-50%);
+            left: 50%;
+        }
+
+        .userImg {
+            position: absolute;
+            width: 90%;
+            margin: 0;
+            -ms-transform: translate(-50%);
+            transform: translate(-50%);
+            left: 50%;
+            border-radius: 50%;
+            -moz-box-shadow: 10px 10px 50px rgb(0, 0, 0);
+            -webkit-box-shadow: 10px 10px 50px rgb(0, 0, 0);
+            box-shadow: 10px 10px 50px rgb(0, 0, 0);
+        }
+
+        .S {
+            top: 17rem;
+            left: 10%;
+            font-family: 'Roboto', sans-serif;
+            background-color: #04AA6D; 
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            height: 7rem;
+            width: 7rem;
+            font-size: 200%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            border-radius: 50%;
+            -moz-box-shadow: 10px 10px 50px rgb(0, 0, 0);
+            -webkit-box-shadow: 10px 10px 50px rgb(0, 0, 0);
+            box-shadow: 10px 10px 50px rgb(0, 0, 0);
+        }
+
+        .P {
+            top: 17rem;
+            right: 10%;
+            font-family: 'Roboto', sans-serif;
+            background-color: #aa0404; 
+            border: none;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            height: 7rem;
+            width: 7rem;
+            font-size: 200%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            border-radius: 50%;
+            -moz-box-shadow: 10px 10px 50px rgb(0, 0, 0);
+            -webkit-box-shadow: 10px 10px 50px rgb(0, 0, 0);
+            box-shadow: 10px 10px 50px rgb(0, 0, 0);
+        }
+
+        @keyframes swipeLeft {
+            100% {
+                left: -1000%;
+            }
+        }
+
+    </style>
+
+    <div class="container">
+        <img class="userImg" src="https://exploringbits.com/wp-content/uploads/2022/01/Manga-PFP-1.jpg?ezimgfmt=rs:352x352/rscb3/ng:webp/ngcb3" alt="Image Unavaiable">
+        <button class="S" onclick="smash()">Crash</button>
+        <button class="P" onclick="pass()">Dash</button>
+      </div>
+    
+    <script>
+        function smash() {
+            userImg = $('.userImg')[0]
+            userImg.animate(
+                [
+                    { transform: 'translate3D(-300%, 0%, 0)' }
+                ], {
+                    duration: 1000
+                }
+            );
+            setTimeout(() => {  
+                $('.userImg').delay(1000).hide();
+            }, 1000);
+            
+        }
+        function pass() {
+            document.getElementsByClassName("userImg")[0].animate(
+                [
+                    { transform: 'translate3D(200%, 0%, 0)' }
+                ], {
+                    duration: 1000
+                }
+            );
+            setTimeout(() => {  
+                $('.userImg').delay(1000).hide();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
