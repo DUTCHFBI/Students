@@ -165,6 +165,7 @@
             index++;
             console.log(index + " | " + people[index-1]);
             $('.userImg').fadeIn( "fast" ) 
+            $('.userImg').delay(500).hide();
             setTimeout(() => {  
                     cooldown = false;
             }, 500);
@@ -174,6 +175,7 @@
             if (!cooldown) {
                 cooldown = true;
                 userImg = $('.userImg')[0]
+                $('.loader').fadeIn( "fast" ) 
                 userImg.animate(
                     [
                         { transform: 'translate3D(-400%, 0%, 0)' }
@@ -190,6 +192,7 @@
         function pass() {
             if (!cooldown) {
                 cooldown = true;
+                $('.loader').fadeIn( "fast" ) 
                 document.getElementsByClassName("userImg")[0].animate(
                     [
                         { transform: 'translate3D(300%, 0%, 0)' }
