@@ -9,6 +9,16 @@
 
 <body>
     <style>
+
+        .center  {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%);
+        transform: translate(-50%);
+        }
+
         .container {
             width: 100%;
             position: absolute;
@@ -93,41 +103,132 @@
             }
         }
 
+
+        .total {
+            max-width: 450px;
+        }
+
+        html, body {margin: 0; height: 100%; overflow: hidden}
+
+        /* button */
+        .loader {
+        margin: 10%;
+        top: 50%;
+        left: 5%;
+        -ms-transform: translate(-50%);
+        transform: translate(-50%);
+        position: absolute;
+        border: 16px solid rgba(0, 0, 0, 0.239);
+        border-radius: 50%;
+        border-top: 16px solid #565656;
+        width: 17rem;
+        height: 17rem;
+        -webkit-animation: spin 0.5s linear infinite; /* Safari */
+        animation: spin 0.5s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+        0% { -webkit-transform: rotate(0deg); }
+        100% { -webkit-transform: rotate(360deg); }
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+   
+        /* button */
+
     </style>
 
-    <div class="container">
-        <img class="userImg" src="https://exploringbits.com/wp-content/uploads/2022/01/Manga-PFP-1.jpg?ezimgfmt=rs:352x352/rscb3/ng:webp/ngcb3" alt="Image Unavaiable">
-        <button class="S" onclick="smash()">Crash</button>
-        <button class="P" onclick="pass()">Dash</button>
+    <div class="container total">
+        <div class="container">
+            <span class="loader"></span>
+        </div>
+        <div class="container">
+            <img class="userImg" src="https://exploringbits.com/wp-content/uploads/2022/01/Manga-PFP-1.jpg?ezimgfmt=rs:352x352/rscb3/ng:webp/ngcb3" alt="Image Unavaiable">
+            <button class="S" onclick="smash()">Crash</button>
+            <button class="P" onclick="pass()">Dash</button>
+        </div>
       </div>
     
+    <script type="text/javascript">
+        // if (screen.width > 450) {
+        //   document.location = "desktop.html";
+        // }
+    </script>
     <script>
-        function smash() {
-            userImg = $('.userImg')[0]
-            userImg.animate(
-                [
-                    { transform: 'translate3D(-300%, 0%, 0)' }
-                ], {
-                    duration: 1000
-                }
-            );
+        var cooldown = false;
+        let index = 0;
+        function LoadNewImage() {
+            index++;
+            console.log(index + " | " + people[index-1]);
+            $('.userImg').fadeIn( "fast" ) 
             setTimeout(() => {  
-                $('.userImg').delay(1000).hide();
-            }, 1000);
-            
+                    cooldown = false;
+            }, 500);
+        }
+
+        function smash() {
+            if (!cooldown) {
+                cooldown = true;
+                userImg = $('.userImg')[0]
+                userImg.animate(
+                    [
+                        { transform: 'translate3D(-400%, 0%, 0)' }
+                    ], {
+                        duration: 700
+                    }
+                );
+                setTimeout(() => {  
+                    $('.userImg').delay(500).hide();
+                    LoadNewImage()
+                }, 500);
+            }
         }
         function pass() {
-            document.getElementsByClassName("userImg")[0].animate(
-                [
-                    { transform: 'translate3D(200%, 0%, 0)' }
-                ], {
-                    duration: 1000
-                }
-            );
-            setTimeout(() => {  
-                $('.userImg').delay(1000).hide();
-            }, 1000);
+            if (!cooldown) {
+                cooldown = true;
+                document.getElementsByClassName("userImg")[0].animate(
+                    [
+                        { transform: 'translate3D(300%, 0%, 0)' }
+                    ], {
+                        duration: 700
+                    }
+                );
+                setTimeout(() => {  
+                    $('.userImg').delay(500).hide();
+                    LoadNewImage()
+                }, 500);
+            }
         }
+
+        var data
+        var people = [];
+
+        $(function() {
+            var code = prompt("Code: ");
+
+            const Http = new XMLHttpRequest();
+            const url='https://flyyrin.pythonanywhere.com/'+code;
+            console.log(code)
+            Http.open("GET", url);
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+                if (data == null) {
+                    data = Http.responseText
+                    console.log("Loaded request")
+                    var data = $.parseJSON(data)
+                    // console.log(data)
+                    $.each(data, function(i, f) {
+                        people.push(f.imageUrl);
+                    });
+                }
+                console.log(people);
+            }
+        })
     </script>
 </body>
 </html>
